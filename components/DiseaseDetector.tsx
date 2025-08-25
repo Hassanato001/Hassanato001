@@ -45,10 +45,10 @@ const DiseaseDetector: React.FC = () => {
 
   const formattedResult = result.split('\n').map((line, index) => {
     if (line.startsWith('### ')) {
-      return <h3 key={index} className="text-lg font-semibold mt-4 mb-2 text-green-800">{line.substring(4)}</h3>;
+      return <h3 key={index} className="text-lg font-semibold mt-4 mb-2 text-teal-800">{line.substring(4)}</h3>;
     }
     if (line.startsWith('## ')) {
-      return <h2 key={index} className="text-xl font-bold mt-6 mb-3 text-green-900">{line.substring(3)}</h2>;
+      return <h2 key={index} className="text-xl font-bold mt-6 mb-3 text-teal-900">{line.substring(3)}</h2>;
     }
     if (line.startsWith('* ')) {
       return <li key={index} className="ml-5 list-disc">{line.substring(2)}</li>;
@@ -60,12 +60,12 @@ const DiseaseDetector: React.FC = () => {
   return (
     <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg animate-fade-in">
       <div className="text-center mb-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-green-800">Crop Disease & Pest Detector</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-teal-800">Crop Disease & Pest Detector</h2>
         <p className="text-gray-600 mt-2">Upload a photo of your plant to get an AI-powered diagnosis and treatment plan.</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-        <div className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-green-300 rounded-lg h-full">
+        <div className="flex flex-col items-center justify-center p-6 border-2 border-dashed border-teal-300 rounded-lg h-full">
           {previewUrl ? (
             <img src={previewUrl} alt="Plant preview" className="max-h-64 w-auto rounded-md object-contain" />
           ) : (
@@ -77,7 +77,7 @@ const DiseaseDetector: React.FC = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <label htmlFor="file-upload" className="cursor-pointer bg-green-100 text-green-700 font-semibold py-3 px-4 rounded-lg text-center hover:bg-green-200 transition-colors">
+          <label htmlFor="file-upload" className="cursor-pointer bg-teal-100 text-teal-700 font-semibold py-3 px-4 rounded-lg text-center hover:bg-teal-200 transition-colors">
             {imageFile ? `Selected: ${imageFile.name}` : 'Choose an Image'}
           </label>
           <input id="file-upload" type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
@@ -85,7 +85,7 @@ const DiseaseDetector: React.FC = () => {
           <button
             onClick={handleAnalyze}
             disabled={isLoading || !imageFile}
-            className="w-full bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 disabled:bg-green-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+            className="w-full bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 disabled:bg-teal-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
           >
             {isLoading ? <><Spinner /> Analyzing...</> : 'Analyze Plant'}
           </button>
@@ -95,16 +95,16 @@ const DiseaseDetector: React.FC = () => {
       </div>
 
       {(isLoading || result) && (
-        <div className="mt-8 pt-6 border-t border-green-200">
-          <h3 className="text-xl font-bold text-green-800 mb-4">Analysis Result</h3>
+        <div className="mt-8 pt-6 border-t border-teal-200">
+          <h3 className="text-xl font-bold text-teal-800 mb-4">Analysis Result</h3>
           {isLoading && (
-            <div className="flex flex-col items-center justify-center bg-green-50 p-6 rounded-lg">
+            <div className="flex flex-col items-center justify-center bg-teal-50 p-6 rounded-lg">
                 <Spinner />
-                <p className="mt-2 text-green-700">AI is analyzing your plant, please wait...</p>
+                <p className="mt-2 text-teal-700">AI is analyzing your plant, please wait...</p>
             </div>
           )}
           {result && (
-            <div className="bg-green-50 p-4 sm:p-6 rounded-lg prose max-w-none">
+            <div className="bg-teal-50 p-4 sm:p-6 rounded-lg prose max-w-none">
               {formattedResult}
             </div>
           )}

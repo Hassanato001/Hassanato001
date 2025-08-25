@@ -30,10 +30,10 @@ const ResourceHub: React.FC = () => {
   
   const formattedGuide = guide.split('\n').map((line, index) => {
     if (line.startsWith('### ')) {
-      return <h3 key={index} className="text-lg font-semibold mt-4 mb-2 text-green-800">{line.substring(4)}</h3>;
+      return <h3 key={index} className="text-lg font-semibold mt-4 mb-2 text-teal-800">{line.substring(4)}</h3>;
     }
     if (line.startsWith('## ')) {
-      return <h2 key={index} className="text-xl font-bold mt-6 mb-3 text-green-900">{line.substring(3)}</h2>;
+      return <h2 key={index} className="text-xl font-bold mt-6 mb-3 text-teal-900">{line.substring(3)}</h2>;
     }
     if (line.startsWith('* ')) {
       return <li key={index} className="ml-5 list-disc">{line.substring(2)}</li>;
@@ -43,9 +43,9 @@ const ResourceHub: React.FC = () => {
 
 
   return (
-    <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg">
+    <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg animate-fade-in">
       <div className="text-center mb-6">
-        <h2 className="text-2xl sm:text-3xl font-bold text-green-800">Farming Resource Hub</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-teal-800">Farming Resource Hub</h2>
         <p className="text-gray-600 mt-2">Get instant, AI-generated guides on any farming topic.</p>
       </div>
 
@@ -55,13 +55,13 @@ const ResourceHub: React.FC = () => {
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           placeholder="e.g., 'How to make organic fertilizer'"
-          className="w-full p-3 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+          className="w-full p-3 border border-teal-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
           onKeyPress={(e) => e.key === 'Enter' && handleGenerateGuide()}
         />
         <button
           onClick={handleGenerateGuide}
           disabled={isLoading || !topic.trim()}
-          className="w-full sm:w-auto bg-green-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-700 disabled:bg-green-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 flex-shrink-0"
+          className="w-full sm:w-auto bg-teal-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-teal-700 disabled:bg-teal-300 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 flex-shrink-0"
         >
           {isLoading ? <><Spinner /> Generating...</> : 'Generate Guide'}
         </button>
@@ -69,16 +69,16 @@ const ResourceHub: React.FC = () => {
       {error && <p className="text-red-500 text-sm mt-2 text-center">{error}</p>}
 
       {(isLoading || guide) && (
-        <div className="mt-8 pt-6 border-t border-green-200">
-          <h3 className="text-xl font-bold text-green-800 mb-4">{isLoading ? 'Generating your guide...' : `Guide: ${topic}`}</h3>
+        <div className="mt-8 pt-6 border-t border-teal-200">
+          <h3 className="text-xl font-bold text-teal-800 mb-4">{isLoading ? 'Generating your guide...' : `Guide: ${topic}`}</h3>
           {isLoading && (
-            <div className="flex flex-col items-center justify-center bg-green-50 p-6 rounded-lg">
+            <div className="flex flex-col items-center justify-center bg-teal-50 p-6 rounded-lg">
                 <Spinner />
-                <p className="mt-2 text-green-700">Please wait while the AI prepares your guide...</p>
+                <p className="mt-2 text-teal-700">Please wait while the AI prepares your guide...</p>
             </div>
           )}
           {guide && (
-            <div className="bg-green-50 p-4 sm:p-6 rounded-lg prose max-w-none">
+            <div className="bg-teal-50 p-4 sm:p-6 rounded-lg prose max-w-none">
               {formattedGuide}
             </div>
           )}

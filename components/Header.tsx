@@ -17,12 +17,13 @@ const NavButton: React.FC<{
   onClick: () => void;
 }> = ({ label, icon, isActive, onClick }) => {
   const baseClasses = "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200";
-  const activeClasses = "bg-green-600 text-white";
-  const inactiveClasses = "text-green-700 hover:bg-green-200";
+  const activeClasses = "bg-teal-600 text-white";
+  const inactiveClasses = "text-teal-700 hover:bg-teal-200";
   return (
     <button
       onClick={onClick}
       className={`${baseClasses} ${isActive ? activeClasses : inactiveClasses}`}
+      aria-label={`Go to ${label}`}
     >
       {icon}
       <span className="hidden sm:inline">{label}</span>
@@ -35,10 +36,10 @@ const Header: React.FC<HeaderProps> = ({ currentView, setCurrentView }) => {
     <header className="bg-white shadow-md sticky top-0 z-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <LeafIcon className="h-8 w-8 text-green-600" />
-            <h1 className="text-xl font-bold text-green-800">Pest & Plant Pal</h1>
-          </div>
+          <button onClick={() => setCurrentView('home')} className="flex items-center gap-2" aria-label="Go to homepage">
+            <LeafIcon className="h-8 w-8 text-teal-600" />
+            <h1 className="text-xl font-bold text-teal-800">Greencare</h1>
+          </button>
           <nav className="flex items-center gap-2 sm:gap-4">
             <NavButton
               label="Detector"

@@ -1,7 +1,7 @@
 
 import type { Chat } from "@google/genai";
 
-export type View = 'detector' | 'chatbot' | 'resources';
+export type View = 'home' | 'detector' | 'chatbot' | 'resources';
 
 export interface ChatMessage {
   role: 'user' | 'model';

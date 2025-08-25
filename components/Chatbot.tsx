@@ -15,7 +15,7 @@ const Chatbot: React.FC = () => {
   useEffect(() => {
     setChat(createChatSession());
     setMessages([
-        { role: 'model', text: 'Hello! I am Pest & Plant Pal. Ask me anything about farming in English, Hausa, Yoruba, or Igbo.' }
+        { role: 'model', text: 'Hello! I am the Greencare AI assistant. Ask me anything about farming in English, Hausa, Yoruba, or Igbo.' }
     ]);
   }, []);
   
@@ -55,9 +55,9 @@ const Chatbot: React.FC = () => {
   };
 
   return (
-    <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg flex flex-col h-[75vh]">
+    <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg flex flex-col h-[75vh] animate-fade-in">
         <div className="text-center mb-4">
-            <h2 className="text-2xl sm:text-3xl font-bold text-green-800">AI Farming Assistant</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-teal-800">AI Farming Assistant</h2>
             <p className="text-gray-600 mt-1">Your multilingual agricultural expert.</p>
         </div>
 
@@ -66,18 +66,18 @@ const Chatbot: React.FC = () => {
             <div key={index} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-xs md:max-w-md lg:max-w-lg px-4 py-2 rounded-2xl ${
                 msg.role === 'user' 
-                    ? 'bg-green-600 text-white rounded-br-none' 
-                    : 'bg-green-100 text-green-900 rounded-bl-none'
+                    ? 'bg-teal-600 text-white rounded-br-none' 
+                    : 'bg-teal-100 text-teal-900 rounded-bl-none'
                 }`}>
                 {msg.text}
-                {msg.role === 'model' && isLoading && index === messages.length - 1 && <span className="inline-block w-2 h-4 bg-green-900 animate-pulse ml-1"></span>}
+                {msg.role === 'model' && isLoading && index === messages.length - 1 && <span className="inline-block w-2 h-4 bg-teal-900 animate-pulse ml-1"></span>}
                 </div>
             </div>
             ))}
             <div ref={messagesEndRef} />
         </div>
 
-        <div className="mt-auto pt-4 border-t border-green-200">
+        <div className="mt-auto pt-4 border-t border-teal-200">
             <div className="flex items-center gap-2">
             <input
                 type="text"
@@ -85,13 +85,13 @@ const Chatbot: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Type your question..."
-                className="w-full p-3 border border-green-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-3 border border-teal-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
                 disabled={isLoading}
             />
             <button
                 onClick={handleSendMessage}
                 disabled={isLoading || !input.trim()}
-                className="bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 disabled:bg-green-300 transition-colors"
+                className="bg-teal-600 text-white p-3 rounded-lg hover:bg-teal-700 disabled:bg-teal-300 transition-colors"
             >
                 {isLoading ? <Spinner /> : <SendIcon className="w-6 h-6" />}
             </button>
